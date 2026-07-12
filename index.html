@@ -444,7 +444,7 @@
       <circle cx="18" cy="16" r="3" />
     </svg>
   </button>
-  <audio id="bgMusic" loop preload="none">
+  <audio id="bgMusic" loop preload="auto" autoplay muted playsinline>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
   
@@ -584,14 +584,31 @@
   const musicToggle = document.getElementById('musicToggle');
   const bgMusic = document.getElementById('bgMusic');
   let isPlaying = false;
+
+  function startMusic(){
+    bgMusic.muted = false;
+    bgMusic.play().then(() => {
+      isPlaying = true;
+      musicToggle.classList.add('playing');
+    }).catch(() => {});
+  }
+
+  // Unmute + play on the very first tap/click/scroll anywhere on the page
+  ['click', 'touchstart', 'scroll'].forEach(evt => {
+    window.addEventListener(evt, function once(){
+      startMusic();
+      ['click','touchstart','scroll'].forEach(e => window.removeEventListener(e, once));
+    }, { once: true });
+  });
+
   musicToggle.addEventListener('click', () => {
     if (isPlaying) {
       bgMusic.pause();
+      isPlaying = false;
+      musicToggle.classList.remove('playing');
     } else {
-      bgMusic.play().catch(() => {});
+      startMusic();
     }
-    isPlaying = !isPlaying;
-    musicToggle.classList.toggle('playing', isPlaying);
   });
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
