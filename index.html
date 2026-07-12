@@ -78,7 +78,32 @@
     letter-spacing:0.14em;
   }
   .lang-toggle button.active{ color:var(--bg); background:var(--accent); }
-
+.music-toggle{
+    position:fixed;
+    top:22px;
+    left:22px;
+    z-index:50;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--line-strong);
+    background:rgba(230,224,207,0.8);
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+  }
+  .music-toggle svg{
+    width:16px; height:16px;
+    stroke:var(--accent);
+    fill:none;
+    stroke-width:1.6;
+  }
+  .music-toggle.playing svg{ animation:notePulse 1.6s ease-in-out infinite; }
+  @keyframes notePulse{
+    0%,100%{ opacity:1; } 50%{ opacity:.45; }
+  }
   .hero{
     min-height:100svh;
     display:flex;
@@ -396,6 +421,7 @@
     .rsvp-card{ padding:36px 22px; }
     .countdown{ gap:16px; }
     .lang-toggle{ top:14px; right:14px; }
+    .music-toggle{ top:14px; left:14px; }
     .gallery{ grid-template-columns:1fr; }
   }
 
