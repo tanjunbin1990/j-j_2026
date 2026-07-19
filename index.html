@@ -619,13 +619,13 @@
     }).catch(() => {});
   }
 
-  // Unmute + play on the very first tap/click/scroll anywhere on the page
-  ['click', 'touchstart', 'scroll'].forEach(evt => {
-    window.addEventListener(evt, function once(){
-      startMusic();
-      ['click','touchstart','scroll'].forEach(e => window.removeEventListener(e, once));
-    }, { once: true });
-  });
+// Unmute + play on the very first real user interaction anywhere on the page
+['click', 'touchstart'].forEach(evt => {
+  window.addEventListener(evt, function once(){
+    startMusic();
+    ['click','touchstart'].forEach(e => window.removeEventListener(e, once));
+  }, { once: true });
+});
 
   musicToggle.addEventListener('click', () => {
     if (isPlaying) {
