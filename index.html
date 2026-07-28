@@ -151,7 +151,7 @@
   .hero h1 em{ font-style:italic; color:var(--accent); font-weight:300; }
   body.lang-zh .hero h1 em{ font-style:normal; }
 
-  .hero .date-line{
+  .hero .{
     margin-top:26px;
     font-size:12px;
     letter-spacing:0.22em;
@@ -161,6 +161,16 @@
     animation:riseIn 1s ease forwards 2s;
   }
 
+  .hero .time-line{
+    margin-top:8px;
+    font-size:14px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:#e2dac2;
+    opacity:0;
+    animation:riseIn 1s ease forwards 2.1s;
+  }
+  
   .countdown{
     display:flex;
     gap:28px;
@@ -502,7 +512,7 @@
     <p class="date-line">
       <span class="dl-text" data-en="Sunday · 6 December 2026 · Petaling Jaya" data-zh="星期日 · 2026年12月6日 · 八打灵再也">Sunday · 6 December 2026 · Petaling Jaya</span>
     </p>
-
+    <p class="time-line" data-en="7:00 PM" data-zh="晚上7点">7:00 PM</p>
     <div class="countdown">
       <div class="unit"><div class="num" id="cd-days">--</div><div class="lbl" data-en="Days" data-zh="天">Days</div></div>
       <div class="divider"></div>
